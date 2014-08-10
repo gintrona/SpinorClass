@@ -1,18 +1,54 @@
 SpinorClass
 ===========
 
+
+What's a spinor?
+----------------
+
+
+If you've stumbled upon this project,  you probably know what a spinor is and you're already dealing with them. So let me just specify what I took into account to implement the class.
+
+<ul>
+<li>A spinor is used to describe the state of an electron (or another particle bearing a spin)
+and its components are complex numbers (or complex functions).
+</li>
+    
+<li>      
+A physical operator affecting the spin can modify the spinor, so the class spinor implements the
+three S operators: applying the operator on a spinor returns another modified spinor. 
+</li>
+
+<li>
+It's also possible to get the norm of a spinor, and the operations TATATATTA are also implemented (overloaded) to        deal with spinor.
+</li>
+
+</ul>
+<b>
 A spinor class based on GSL. 
+</b>
 
-The class_spinor and the class_spin_matrix allow you to write spinors and related matrix elements in a transparent way. 
+Using the class
+---------------
 
-What's a spinor? 
+The <b>class_spinor</b> and the <b>class_spin_matrix</b> allow you to write spinors and related matrix elements in a transparent way. 
 
-If you've stumbled upon this project,  you probably know what a spinor is and you're already dealing with them. In any case, and as an example, a spinor used to describe the state of an electron is a complex vector with two components, each of them carrying a complex number (actually a complex function).
-A physical operator affecting the spin can modify the spinor. 
+Declaring and initializing a spinor is as easy as :
 
-The class spinor implements the S operators (the three operators): applying the operator on a spinor returns another modified spinor. 
+      complex_spinor Spinor1(complexVar1,complexVar2);
+      
+or equivalently:
 
-It's also possible to get the norm of a spinor, and the operations TATATATTA are also implemented (overloaded) to deal with spinor.
+      Spinor1.complex_spinor_set(UP, complexVariable1); 
+      Spinor1.complex_spinor_set(DOWN,complexVariable2);
+   
+You get its components simply by calling: 
+
+      complexVar3 = Spinor1.complex_spinor_get(UP);   //returns complexVar1
+      complexVar4 = Spinor1.complex_spinor_get(DOWN); //returns complexVar2
+
+
+The implementation is based on the GSL library, and more precisely on the vector and matrix structures.  
+
    
 Initializing a spinor is as easy as :
 
