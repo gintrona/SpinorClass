@@ -6,25 +6,22 @@ What's a spinor?
 ----------------
 
 
-If you've stumbled upon this project,  you probably know what a spinor is and you're already dealing with them. So let me just specify what I took into account to implement the class.
-
 <ul>
-<li>A spinor is used to describe the state of an electron (or another particle bearing a spin)
-and its components are complex numbers (or complex functions).
+<li>A spinor is an element of a vector space used to describe the state of an electron (or any another particle having a spin) and its components are complex numbers (or complex functions).
 </li>
     
 <li>      
-A physical operator affecting the spin can modify the spinor, so the class spinor implements the
+Accordingly, a physical operator affecting the spin can modify the spinor, so the class spinor implements the
 three S operators: applying the operator on a spinor returns another modified spinor. 
 </li>
 
 <li>
-It's also possible to get the norm of a spinor, and the operations TATATATTA are also implemented (overloaded) to        deal with spinor.
+Several operations are implemented (norm of a spinor, cout, addition...).
 </li>
 
 </ul>
 <b>
-A spinor class based on GSL. 
+The spinor class is based on GSL. 
 </b>
 
 Using the class
@@ -59,4 +56,4 @@ And the matrix element (involving two spinors) is written as:
 
 How's it implemented?
 Both the spinor and the spin_matrices are based on the gsl_complex_vector and gsl_complex matrix
-GSL complex vectors respectively. These two classes provide an interface to the corresponding gsl classes and their main purpose is to have a fluent code.   
+GSL complex vectors respectively. These two classes provide an interface to the corresponding gsl classes.   
