@@ -133,8 +133,8 @@ int main(int argc,char *argv[]){
 	// CLASS MATRIX *
 	//***************
 
-	int matrixDim = 2;
-	spin_matrix_complex MatrixHami(matrixDim,matrixDim);
+	int dim = 2;
+	spin_matrix_complex MatrixHami(dim,dim);
 	spin_matrix_complex * matrixHami = &MatrixHami;
 	
 	//matrixHami is a pointer, and pMatriz point to a gsl_matrix_complex
@@ -152,13 +152,12 @@ int main(int argc,char *argv[]){
 	cout<< "Real part	"<<GSL_REAL(c_value_1) <<endl;
 	cout<< "Imaginary part	"<<GSL_IMAG(c_value_1) <<endl;
 	cout<<"#####################"<<endl;
-ue_1 = MatrixHami.spin_matrix_complex_get(0 , UP, 1, DOWN);
 
 	//workspace needed by the program
-	gsl_eigen_herm_workspace * w 	= gsl_eigen_herm_alloc(2*matrixDim);
+	gsl_eigen_herm_workspace * w 	= gsl_eigen_herm_alloc(2*dim); //2 due to spin
 	
 	//eigenvalues are stored in vector, the values are real, not complex
-	gsl_vector * eigenvalues	= gsl_vector_alloc(2*matrixDim);
+	gsl_vector * eigenvalues	= gsl_vector_alloc(2*dim);
 	
 	//make the matrix Hermitian
 	MatrixHami.spin_matrix_complex_symmetrize();
@@ -168,9 +167,9 @@ ue_1 = MatrixHami.spin_matrix_complex_get(0 , UP, 1, DOWN);
 	
 	cout<<"\n ############### Eigenvalues ####################"<<endl;
 	cout<< "Diagonalization of a Hermitian matrix : Eigenvalues are real"<<endl;
-	for(int it=0 ; it<2*matrixDim ; it++){
+	for(int it=0 ; it<2*dim ; it++){
 	  cout<< gsl_vector_get(eigenvalues,it) <<endl;
 	}
 	cout<<"####################################################"<<endl;
-return 0;
+	return 0;
 }
