@@ -29,7 +29,7 @@ The spinor class is based on GSL.
 Using the class
 ---------------
 
-The <b>class_spinor</b> and the <b>class_spin_matrix</b> allow you to write spinors and related matrix elements in an intuitive way by accessing and manipulating the UP and the DOWN components (or matrix elements) directly. The implementation is based on the GSL library, and more precisely on the complex vector and matrix structures.
+The <b>class_spinor</b> and the <b>class_spin_matrix</b> allow you to write spinors and related matrix elements in an intuitive way by accessing and manipulating the UP and the DOWN components (or matrix elements) directly.
 
 To declare and initialize a spinor use:
 
@@ -60,3 +60,4 @@ Now you can diagonalize the matrix (in this case I take a Hermitian matrix)
 
 where the method "pMatriz" returns a pointer to the underlying gsl_matrix_complex structure and "eigenvalues" is the vector (gsl_vector) storing the resulting eigenvalues.
 
+The implementation is based on the GSL library, and more precisely on the complex vector and matrix structures.

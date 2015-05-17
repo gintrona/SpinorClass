@@ -15,6 +15,7 @@ complex_spinor::complex_spinor(){
 }
 
 //with number of sites
+
 complex_spinor::complex_spinor(const int & numSites){
 
 	this->priv_pVector = gsl_vector_complex_alloc(2*numSites);

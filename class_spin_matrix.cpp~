@@ -92,6 +92,7 @@ const int spin_matrix_complex::spin_matrix_complex_numSites()const{
 	return this->_numSites;
 }
 
+
 void spin_matrix_complex::spin_matrix_complex_symmetrize(){
 
 	int i;

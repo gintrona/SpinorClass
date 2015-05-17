@@ -9,6 +9,7 @@ class spin_matrix_complex{
 	public:
 
 	//CONTRUCTORS
+
 		//WITH PARAMETERS	
 		spin_matrix_complex(const int & numRows, const int & numColumns);
 		//por copia
@@ -17,6 +18,7 @@ class spin_matrix_complex{
 		~spin_matrix_complex();
 
 	//GETTERS y SETTERS
+
 		const gsl_complex spin_matrix_complex_get(const int & i ,SPIN spin_i ,const int & j, SPIN spin_j) const;	
 		//set the value of the element (i,j) 	
 		void spin_matrix_complex_set( const int & i , SPIN spin_i, const int & j, SPIN spin_j, const gsl_complex & c_value );
@@ -24,6 +26,7 @@ class spin_matrix_complex{
 		gsl_matrix_complex * pMatriz() const;
 	
 	//Write and read
+
 		const int spin_matrix_complex_numSites() const;
 		//write the matrix in a file (ascii with floats)		
 		void spin_matrix_complex_fprintf(FILE *) const;
@@ -37,6 +40,7 @@ class spin_matrix_complex{
 	//OPERATIONS
 		//symmetrize the matrix
 		void spin_matrix_complex_symmetrize();
+		
 
 	private:
 

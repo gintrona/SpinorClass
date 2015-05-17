@@ -152,7 +152,9 @@ int main(int argc,char *argv[]){
 	cout<< "Real part	"<<GSL_REAL(c_value_1) <<endl;
 	cout<< "Imaginary part	"<<GSL_IMAG(c_value_1) <<endl;
 	cout<<"#####################"<<endl;
-ue_1 = MatrixHami.spin_matrix_complex_get(0 , UP, 1, DOWN);
+
+
+	c_value_1 = MatrixHami.spin_matrix_complex_get(0 , UP, 1, DOWN);
 
 	//workspace needed by the program
 	gsl_eigen_herm_workspace * w 	= gsl_eigen_herm_alloc(2*matrixDim);
