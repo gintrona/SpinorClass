@@ -23,13 +23,13 @@ If you want to see some examples, check the main.cpp file. You'll find the makef
 
 </ul>
 <b>
-The spinor class is based on GSL. 
+The complex_spinor and spin_matrix_complex classes are based on GSL. 
 </b>
 
 Using the class
 ---------------
 
-The <b>class_spinor</b> and the <b>class_spin_matrix</b> allow you to write spinors and related matrix elements in an intuitive way by accessing and manipulating the UP and the DOWN components (or matrix elements) directly. The implementation is based on the GSL library, and more precisely on the complex vector and matrix structures.
+The <b>spinor</b> and the <b>spin_matrix</b> classes allow you to write spinors and related matrix elements in an intuitive way by accessing and manipulating the UP and the DOWN components (or matrix elements) directly. The implementation is based on the GSL library, and more precisely on the complex vector and matrix structures.
 
 To declare and initialize a spinor use:
 
@@ -45,18 +45,23 @@ You get the components simply by calling:
       complexVar_3 = Spinor_1.complex_spinor_get(UP);   //returns complexVar_1
       complexVar_4 = Spinor_1.complex_spinor_get(DOWN); //returns complexVar_2
 
-In order to set the value of a given matrix element:
+In order to use the spin_matrix_complex, you first initialize it:
+
+       spin_matrix_complex MatrixHami(dim,dim);
+       spin_matrix_complex * matrixHami = &MatrixHami;
+
+and then you set the matrix elements:
 
 	MatrixInstance.spin_matrix_complex_set(0 , UP, 1, UP,complexVar_1);
 	MatrixInstance.spin_matrix_complex_set(0 , UP, 1, DOWN,complexVar_2);
 	MatrixInstance.spin_matrix_complex_set(0 , DOWN, 1, UP,complexVar_3);
 	MatrixInstance.spin_matrix_complex_set(0 , DOWN, 1, DOWN,complexVar_4);
 
-We see here that the matrix element a_01 contains 4 values due to the spin degree of freedom.
+In a tight-binding model with spin-orbit coupling this matrix element would
+correspond to the transition element between sites 1 and 0.  
 
-Now you can diagonalize the matrix (in this case I take a Hermitian matrix)
+Now you can diagonalize the matrix (in this case I take a complex Hermitian matrix, hence the eigenvalues are real)
 
-	gsl_eigen_herm( MatrixInstance->pMatriz(), eigenvalues, w)
+	gsl_eigen_herm( matrixInstance->pMatriz(), eigenvalues, w)
 
-where the method "pMatriz" returns a pointer to the underlying gsl_matrix_complex structure and "eigenvalues" is the vector (gsl_vector) storing the resulting eigenvalues.
-
+where the method "pMatriz" returns a pointer to the underlying gsl_matrix_complex structure and "eigenvalues" is the vector (gsl_vector) storing the resulting (real) eigenvalues.
